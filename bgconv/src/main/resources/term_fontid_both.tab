@@ -1,0 +1,18 @@
+; BGConv 使用的 term_fontid_both.tab，用於字型名稱轉譯 檔案
+; 維護者: Kii Ali <kiiali@cpatch.org>
+; v1.0.35 by Kii Ali
+; v1.0.35 by Kii Ali
+; 表格語言: BIG5 / GB2312
+L BIG5
+; 轉譯方向: B2G / G2B / BOTH
+T BOTH
+S 新細明體
+D 宋体
+S 標楷體
+D 楷書体
+S 華康儷中黑
+D 黑体
+S PMingLiU
+D SimSun
+S DFLiHei
+D SimHei

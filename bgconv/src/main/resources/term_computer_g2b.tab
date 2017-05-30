@@ -1,0 +1,23 @@
+; BGConv 使用的 WordConv.txt 檔案
+; 維護者: Kii Ali <kiiali@cpatch.org>
+; 表格語言: BIG5 / GB2312
+L BIG5
+; 轉譯方向: B2G / G2B / BOTH
+T G2B
+; v1.0.35 by Kii Ali
+; 這裡使用一些比較舊、微軟誤譯詞，而現在已不再使用的詞，來做放置地。只是為保持相容性而設定。
+S Chinese (PRC)
+D Chinese (Taiwan)
+S 關于
+D 關於
+S 缺省
+D 預設
+S 站點
+D 網站
+S 橫向平鋪
+D 水平並排
+S 縱向平鋪
+D 垂直並排
+S 幫助
+D 說明
+

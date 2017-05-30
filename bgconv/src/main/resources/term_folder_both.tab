@@ -1,0 +1,20 @@
+; BGConv 使用的 term_file.tab ，用於相關於「檔案」「文件」的轉譯。
+; 維護者: Kii Ali <kiiali@cpatch.org>
+; 表格語言: BIG5 / GB2312
+L BIG5
+; 轉譯方向: B2G / G2B / BOTH
+T BOTH
+; v1.0.35 by Kii Ali
+; v1.0.35 by Kii Ali
+S 資料夾
+D 文件夾
+S 依資料夾
+D 按文件夾
+S 目的資料夾
+D 目標文件夾
+S 移動資料夾
+D 文件夾移動
+S 確認取代資料夾
+D 確認文件夾替換
+S 一併尋找子資料夾
+D 包含子文件夾

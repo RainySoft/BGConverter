@@ -1,0 +1,34 @@
+; BGConv 使用的 WordConv.txt 檔案
+; 維護者: Kii Ali <kiiali@cpatch.org>
+; 表格語言: BIG5 / GB2312
+L BIG5
+; 轉譯方向: B2G / G2B / BOTH
+T BOTH
+; v1.0.35 by Kii Ali
+; v1.0.35 by Kii Ali
+S cht.chm
+D chs.chm
+S Chinese Big5
+D Chinese GB2312
+S Chinese BIG5
+D Chinese GB2312
+S Chinese (Taiwan)
+D Chinese (P.R.C.)
+S Chinese(Taiwan)
+D Chinese(P.R.C.)
+S Chinese (Traditional)
+D Chinese (Simplified)
+S Chinese(Traditional)
+D Chinese(Simplified)
+S FontCharset=132
+D FontCharset=134
+S (AFX_TARG_CHT)
+D (AFX_TARG_CHS)
+S SUBLANG_CHINESE_TRADITIONAL
+D SUBLANG_CHINESE_SIMPLIFIED
+S code_page(950)
+D code_page(936)
+S charset=big5
+D charset=gb2312
+;S 1028
+;D 2052
