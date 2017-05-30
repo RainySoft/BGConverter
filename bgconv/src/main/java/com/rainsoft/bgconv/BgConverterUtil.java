@@ -3,7 +3,6 @@
  */
 package com.rainsoft.bgconv;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -15,15 +14,16 @@ import java.util.Scanner;
  * @author Lance
  *
  */
+@SuppressWarnings("resource")
 public class BgConverterUtil {
 	private final static HashMap<ByteBuffer, byte[]> bgMap = new HashMap<>();
+	private final static HashMap<ByteBuffer, byte[]> gbMap = new HashMap<>();
 
 	static {
-		InputStream in = ClassLoader.getSystemResourceAsStream("bg2gb.map");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		Scanner scanner = new Scanner(new InputStreamReader(in));
-		while (scanner.hasNext()) {
-			String s = scanner.nextLine();
+		InputStream inbg = ClassLoader.getSystemResourceAsStream("bg2gb.map");
+		Scanner scannerbg = new Scanner(new InputStreamReader(inbg));
+		while (scannerbg.hasNext()) {
+			String s = scannerbg.nextLine();
 			String[] innerCodes = s.split(" ");
 			byte[] bg5key = getBytesFromString(innerCodes[0]);
 //			System.out.println("bg5:" + (int)bg5key[0] + ":" + (int)bg5key[1]) ;
@@ -31,7 +31,19 @@ public class BgConverterUtil {
 //			System.out.println("gbk:" + (int)gbkey[0] + ":" + (int)gbkey[1]);
 			bgMap.put(ByteBuffer.wrap(bg5key), gbkey);			
 		}
-		scanner.close();
+		scannerbg.close();		
+		InputStream ingb = ClassLoader.getSystemResourceAsStream("gb2bg.map");
+		Scanner scannergb = new Scanner(new InputStreamReader(ingb));
+		while (scannergb.hasNext()) {
+			String s = scannergb.nextLine();
+			String[] innerCodes = s.split(" ");
+			byte[] gbkey = getBytesFromString(innerCodes[0]);
+//			System.out.println("bg5:" + (int)bg5key[0] + ":" + (int)bg5key[1]) ;
+			byte[] big5key = getBytesFromString(innerCodes[1]);
+//			System.out.println("gbk:" + (int)gbkey[0] + ":" + (int)gbkey[1]);
+			bgMap.put(ByteBuffer.wrap(gbkey), big5key);			
+		}
+		scannerbg.close();		
 	}
 
 	public static String b2gRawString(String source) throws UnsupportedEncodingException {
@@ -62,6 +74,34 @@ public class BgConverterUtil {
 		}
 		return sb.toString(); 
 	}
+	
+	public static String g2bRawString(String source) throws UnsupportedEncodingException {
+		System.out.println(gbMap.size());
+		StringBuilder sb = new StringBuilder(); 
+		byte[] src = source.getBytes("MS950");
+		for (int start=0; start <src.length; ) {
+			if (src[start] >0 ) {				
+				char c = (char) src[start];
+				sb.append(c);
+				start++;
+				continue; 
+			}
+			Byte c1 = src[start];
+			Byte c2 = src[start+1];
+			
+			System.out.println("src byte:" + c1.intValue() + ":" + c2.intValue());
+			
+			byte[] dest = gbMap.get(ByteBuffer.wrap(new byte[] {src[start],src[start+1]}));
+			if (dest !=null) {
+				Byte d1 = dest[0];
+				Byte d2 = dest[1];
+				System.out.println("dest byte:" + d1.intValue() + ":" + d2.intValue());
+				sb.append(new String(dest,"MS950"));
+			} 
+			start++;start++; 
+		}
+		return sb.toString(); 
+	}	
 	
 	public String readDefinitionFile() {
 		InputStream in = ClassLoader.getSystemResourceAsStream("bg2gb.map");
