@@ -71,7 +71,11 @@ public class BgConverterUtil {
 				Byte d2 = dest[1];
 				logger.trace("dest byte:" + d1.intValue() + ":" + d2.intValue());
 				sb.append(new String(dest,"GBK"));
-			} 
+			} else {
+				logger.error("No gbk mapping innercode : " +  getCharacter4Big5(new byte[] {c1,c2}));
+				sb.append(getCharacter4Big5(new byte[] {c1,c2}));
+			}
+			
 			start++; 
 			start++; 
 		}
@@ -99,7 +103,10 @@ public class BgConverterUtil {
 				Byte d2 = dest[1];
 				logger.trace("dest byte:" + d1.intValue() + ":" + d2.intValue());
 				sb.append(new String(dest,"MS950"));
-			} 
+			} else {
+				logger.error("No big5 mapping innercode : " +  getCharacter4Gbk(new byte[] {c1,c2}));
+				sb.append(getCharacter4Gbk(new byte[] {c1,c2}));
+			}
 			start++;start++; 
 		}
 		return sb.toString(); 

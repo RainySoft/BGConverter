@@ -102,7 +102,7 @@ public class BgConverterUtilTest {
 				logger.info("source:" + source);
 				String result = BgConverterUtil.b2gRawString(source);
 				logger.info("result:" + result);
-				String result2 = BgConverterUtil.g2bRawString(source);
+				String result2 = BgConverterUtil.g2bRawString(result);
 				logger.info("result2:" + result2);
 			} catch (UnsupportedEncodingException e) {
 				fail(e.getMessage());
@@ -127,6 +127,7 @@ public class BgConverterUtilTest {
 				logger.info("result:" + result);
 				String result2 = BgConverterUtil.b2gRawString(result);
 				logger.info("result2:" + result2);
+				logger.info(BgConverterUtil.g2bRawString(result2));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
