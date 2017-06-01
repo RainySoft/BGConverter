@@ -1,0 +1,2 @@
+line1: This is gbk to big5 test file
+line2 : 广厂才么卫发饥吊当  执
